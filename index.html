@@ -1,195 +1,1093 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mariam Esimova | IT Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mariam Esimova | Portfolio</title>
+    <meta
+        name="description"
+        content="Personal portfolio for Mariam Esimova, an Information Systems student and future IT specialist."
+    >
+    <style>
+        :root {
+            --bg: #f7f1ea;
+            --paper: rgba(255, 250, 245, 0.88);
+            --card: rgba(255, 255, 255, 0.84);
+            --text: #32241a;
+            --muted: #7f6a58;
+            --line: rgba(124, 92, 67, 0.12);
+            --accent: #a78058;
+            --accent-strong: #866341;
+            --accent-soft: #e9dac9;
+            --shadow: 0 20px 50px rgba(107, 76, 47, 0.12);
+            --radius-lg: 28px;
+            --radius-md: 20px;
+            --radius-sm: 14px;
+            --max: 1240px;
+        }
 
-<style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Segoe UI',sans-serif;
-}
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-body{
-background:#0f172a;
-color:white;
-line-height:1.6;
-}
+        html {
+            scroll-behavior: smooth;
+        }
 
-header{
-background:linear-gradient(135deg,#2563eb,#7c3aed);
-padding:100px 20px;
-text-align:center;
-}
+        body {
+            font-family: Georgia, "Times New Roman", serif;
+            color: var(--text);
+            background:
+                radial-gradient(circle at 12% 8%, rgba(167, 128, 88, 0.24), transparent 18%),
+                radial-gradient(circle at 92% 6%, rgba(167, 128, 88, 0.18), transparent 16%),
+                linear-gradient(180deg, #fbf7f2 0%, #f4ede5 100%);
+            min-height: 100vh;
+        }
 
-header h1{
-font-size:60px;
-margin-bottom:15px;
-}
+        body::before,
+        body::after {
+            content: "";
+            position: fixed;
+            border-radius: 999px;
+            pointer-events: none;
+            z-index: -1;
+        }
 
-header p{
-font-size:22px;
-}
+        body::before {
+            width: 420px;
+            height: 420px;
+            top: -140px;
+            right: -120px;
+            background: radial-gradient(circle, rgba(167, 128, 88, 0.18), transparent 70%);
+        }
 
-section{
-max-width:1100px;
-margin:auto;
-padding:70px 20px;
-}
+        body::after {
+            width: 360px;
+            height: 360px;
+            bottom: -140px;
+            left: -110px;
+            background: radial-gradient(circle, rgba(207, 185, 163, 0.3), transparent 72%);
+        }
 
-h2{
-text-align:center;
-margin-bottom:30px;
-color:#60a5fa;
-font-size:34px;
-}
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
 
-.card{
-background:#1e293b;
-padding:25px;
-border-radius:18px;
-margin-bottom:20px;
-box-shadow:0 0 15px rgba(0,0,0,0.3);
-}
+        .container {
+            width: min(var(--max), calc(100% - 28px));
+            margin: 0 auto;
+        }
 
-.skills{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-gap:15px;
-}
+        .site-shell {
+            padding: 18px 0 40px;
+        }
 
-.skill{
-background:#334155;
-padding:15px;
-border-radius:12px;
-text-align:center;
-font-weight:bold;
-}
+        .site-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            padding: 12px 18px 22px;
+        }
 
-footer{
-background:#020617;
-text-align:center;
-padding:30px;
-margin-top:50px;
-}
-</style>
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .brand-mark {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            color: #fff;
+            background: linear-gradient(135deg, #ccb299, #9f7752);
+            font-size: 0.95rem;
+            font-weight: 700;
+        }
+
+        .brand-name {
+            font-size: 1.65rem;
+            line-height: 0.95;
+            letter-spacing: 0.03em;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 34px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 0.92rem;
+        }
+
+        .nav a {
+            position: relative;
+            padding-bottom: 8px;
+            color: #3e3024;
+        }
+
+        .nav a:first-child::after,
+        .nav a:hover::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 2px;
+            background: var(--accent);
+        }
+
+        .download {
+            border: 1px solid transparent;
+            border-radius: 999px;
+            padding: 13px 18px;
+            background: linear-gradient(135deg, #b18a62, #8c6846);
+            color: #fff;
+            font-size: 0.85rem;
+            letter-spacing: 0.03em;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1.02fr 1.1fr;
+            gap: 18px;
+            align-items: stretch;
+        }
+
+        .portrait-panel,
+        .hero-panel,
+        .card {
+            background: var(--paper);
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(14px);
+        }
+
+        .portrait-panel {
+            position: relative;
+            min-height: 620px;
+            border-radius: 40px;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 22% 14%, rgba(255, 255, 255, 0.8), transparent 12%),
+                radial-gradient(circle at 72% 50%, rgba(255, 255, 255, 0.12), transparent 26%),
+                linear-gradient(135deg, #d7c0aa 0%, #b18e6c 30%, #5f432d 100%);
+        }
+
+        .portrait-arch {
+            position: absolute;
+            inset: 32px 34px 44px 34px;
+            border-radius: 260px 260px 42px 42px;
+            background:
+                radial-gradient(circle at 50% 16%, rgba(255, 255, 255, 0.3), transparent 20%),
+                linear-gradient(180deg, #7f5d42 0%, #b8916f 44%, #eee4d6 100%);
+            overflow: hidden;
+        }
+
+        .portrait-arch::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(180deg, rgba(82, 58, 39, 0.18) 0%, transparent 20%, transparent 74%, rgba(255, 244, 231, 0.34) 100%),
+                radial-gradient(circle at 24% 16%, rgba(255, 255, 255, 0.42), transparent 16%),
+                radial-gradient(circle at 78% 82%, rgba(255, 237, 220, 0.24), transparent 20%);
+            z-index: 1;
+        }
+
+        .portrait-arch::after {
+            content: "Mariam Esimova";
+            position: absolute;
+            left: 50%;
+            bottom: 34px;
+            transform: translateX(-50%);
+            padding: 10px 16px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.76);
+            color: var(--accent-strong);
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            z-index: 2;
+        }
+
+        .portrait-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center bottom;
+            transform: scale(1.03);
+            filter: saturate(1.02) contrast(1.03) brightness(1.02);
+        }
+
+        .decor-dots {
+            position: absolute;
+            width: 62px;
+            height: 90px;
+            left: 22px;
+            top: 184px;
+            background-image: radial-gradient(#ecd9c7 1.4px, transparent 1.4px);
+            background-size: 14px 14px;
+        }
+
+        .decor-ring {
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            left: -70px;
+            bottom: -26px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 245, 236, 0.8);
+            box-shadow: 0 0 0 18px rgba(245, 232, 219, 0.18);
+        }
+
+        .hero-panel {
+            border-radius: 40px;
+            padding: 34px 34px 28px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sparkle,
+        .sparkle-2,
+        .ring-right {
+            position: absolute;
+            pointer-events: none;
+        }
+
+        .sparkle,
+        .sparkle-2 {
+            width: 18px;
+            height: 18px;
+            background:
+                linear-gradient(transparent 46%, rgba(204, 171, 142, 0.8) 46%, rgba(204, 171, 142, 0.8) 54%, transparent 54%),
+                linear-gradient(90deg, transparent 46%, rgba(204, 171, 142, 0.8) 46%, rgba(204, 171, 142, 0.8) 54%, transparent 54%);
+        }
+
+        .sparkle {
+            left: 72px;
+            top: 88px;
+        }
+
+        .sparkle-2 {
+            right: 78px;
+            top: 132px;
+        }
+
+        .ring-right {
+            width: 160px;
+            height: 160px;
+            right: -54px;
+            top: 212px;
+            border-radius: 50%;
+            border: 1px solid rgba(183, 150, 121, 0.26);
+            box-shadow: 0 0 0 12px rgba(240, 225, 209, 0.36);
+        }
+
+        .intro-pill {
+            display: inline-block;
+            margin: 44px 0 18px;
+            border: 1px solid rgba(167, 128, 88, 0.28);
+            border-radius: 999px;
+            padding: 10px 18px;
+            color: var(--accent-strong);
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 0.84rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-size: clamp(3.8rem, 8vw, 6.1rem);
+            line-height: 0.9;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .hero h1 span {
+            display: block;
+            color: #8e6d4e;
+        }
+
+        .subtitle {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 1.55rem;
+            line-height: 1.3;
+            margin-bottom: 26px;
+        }
+
+        .subtitle span {
+            color: #b18a62;
+            display: block;
+        }
+
+        .quote {
+            max-width: 540px;
+            color: #584434;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 28px;
+            position: relative;
+            padding-left: 28px;
+        }
+
+        .quote::before,
+        .quote::after {
+            position: absolute;
+            color: #d0ae8e;
+            font-size: 2rem;
+            line-height: 1;
+        }
+
+        .quote::before {
+            content: '"';
+            left: 0;
+            top: -6px;
+        }
+
+        .quote::after {
+            content: '"';
+            right: -18px;
+            bottom: -10px;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-bottom: 28px;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            padding: 12px 22px;
+            border-radius: 12px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 0.92rem;
+            border: 1px solid rgba(167, 128, 88, 0.22);
+        }
+
+        .button-primary {
+            background: linear-gradient(135deg, #b28a62, #8e6946);
+            color: #fff;
+        }
+
+        .button-secondary {
+            background: rgba(255, 255, 255, 0.85);
+            color: #6f553d;
+        }
+
+        .socials {
+            display: flex;
+            gap: 16px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 0.95rem;
+        }
+
+        .socials a {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            display: grid;
+            place-items: center;
+            background: rgba(255, 255, 255, 0.74);
+            border: 1px solid var(--line);
+        }
+
+        .sections {
+            display: grid;
+            gap: 18px;
+            margin-top: 18px;
+        }
+
+        .two-col {
+            display: grid;
+            grid-template-columns: 0.82fr 1.18fr;
+            gap: 18px;
+        }
+
+        .card {
+            border-radius: 22px;
+            padding: 22px;
+        }
+
+        .section-title {
+            font-size: 1.9rem;
+            margin-bottom: 18px;
+        }
+
+        .split-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+
+        .split-title::before {
+            content: "";
+            width: 32px;
+            height: 2px;
+            background: #b6906a;
+        }
+
+        .about-layout {
+            display: grid;
+            grid-template-columns: 54px 1fr;
+            gap: 16px;
+            align-items: start;
+        }
+
+        .about-icons {
+            display: grid;
+            gap: 18px;
+            padding-top: 6px;
+            color: #a37b53;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .about-icons span {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            display: grid;
+            place-items: center;
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid var(--line);
+        }
+
+        .body-copy,
+        .skill-chip,
+        .project-text,
+        .timeline-list,
+        .goal-copy,
+        .edu-copy,
+        .footer-line {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .body-copy {
+            color: var(--muted);
+            line-height: 1.8;
+        }
+
+        .skill-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .skill-chip {
+            min-height: 58px;
+            border-radius: 14px;
+            padding: 14px 16px;
+            background: rgba(255, 255, 255, 0.72);
+            border: 1px solid var(--line);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #49382a;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .projects-title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            margin: 6px 0 18px;
+        }
+
+        .projects-title::before,
+        .projects-title::after {
+            content: "";
+            width: 90px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #b6906a, transparent);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .project-card {
+            overflow: hidden;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.85);
+            border: 1px solid var(--line);
+            box-shadow: 0 10px 24px rgba(108, 82, 58, 0.08);
+        }
+
+        .project-media {
+            height: 156px;
+            position: relative;
+            background:
+                linear-gradient(135deg, rgba(17, 22, 29, 0.94), rgba(53, 63, 73, 0.86)),
+                radial-gradient(circle at 70% 20%, rgba(255, 255, 255, 0.12), transparent 26%);
+        }
+
+        .project-media.alt-one {
+            background:
+                linear-gradient(135deg, rgba(36, 31, 24, 0.84), rgba(113, 82, 54, 0.9)),
+                radial-gradient(circle at 70% 20%, rgba(255, 255, 255, 0.14), transparent 22%);
+        }
+
+        .project-media.alt-two {
+            background:
+                linear-gradient(135deg, rgba(26, 28, 34, 0.9), rgba(48, 87, 126, 0.82)),
+                radial-gradient(circle at 65% 24%, rgba(255, 255, 255, 0.12), transparent 20%);
+        }
+
+        .project-media.alt-three {
+            background:
+                linear-gradient(135deg, rgba(24, 25, 30, 0.92), rgba(74, 76, 80, 0.84)),
+                radial-gradient(circle at 72% 18%, rgba(255, 255, 255, 0.12), transparent 24%);
+        }
+
+        .project-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            width: 36px;
+            height: 36px;
+            border-radius: 12px;
+            background: rgba(185, 151, 120, 0.88);
+            color: #fff;
+            display: grid;
+            place-items: center;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 0.86rem;
+            font-weight: 700;
+        }
+
+        .mock-screen,
+        .mock-book,
+        .mock-network {
+            position: absolute;
+            inset: auto;
+        }
+
+        .mock-screen {
+            width: 78%;
+            height: 78px;
+            left: 11%;
+            bottom: 28px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background:
+                linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 20%),
+                repeating-linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1) 8px, transparent 8px, transparent 16px);
+        }
+
+        .mock-book {
+            width: 94px;
+            height: 110px;
+            left: calc(50% - 47px);
+            bottom: 18px;
+            border-radius: 4px;
+            background:
+                linear-gradient(90deg, rgba(247, 236, 221, 0.92) 0 48%, rgba(186, 147, 105, 0.22) 48% 52%, rgba(247, 236, 221, 0.92) 52%);
+            box-shadow: 0 10px 26px rgba(10, 10, 10, 0.25);
+        }
+
+        .mock-network {
+            width: 82%;
+            height: 64px;
+            left: 9%;
+            bottom: 36px;
+            border-radius: 10px;
+            background:
+                linear-gradient(180deg, rgba(218, 220, 224, 0.86), rgba(103, 107, 114, 0.9));
+            box-shadow: inset 0 -10px 16px rgba(0, 0, 0, 0.18);
+        }
+
+        .mock-network::before {
+            content: "";
+            position: absolute;
+            left: 14px;
+            right: 14px;
+            top: 20px;
+            height: 10px;
+            border-radius: 999px;
+            background:
+                repeating-linear-gradient(90deg, #1d2125, #1d2125 10px, transparent 10px, transparent 20px);
+        }
+
+        .project-content {
+            padding: 16px 14px 18px;
+        }
+
+        .project-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 6px;
+        }
+
+        .project-label {
+            color: #b08861;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .project-text {
+            color: var(--muted);
+            line-height: 1.65;
+            font-size: 0.95rem;
+        }
+
+        .bottom-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .timeline-list {
+            display: grid;
+            gap: 16px;
+            color: var(--muted);
+        }
+
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 14px 1fr;
+            gap: 12px;
+            align-items: start;
+        }
+
+        .timeline-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #b18a62;
+            margin-top: 8px;
+            box-shadow: 0 0 0 4px rgba(177, 138, 98, 0.16);
+        }
+
+        .timeline-item strong {
+            display: block;
+            color: #433223;
+            margin-bottom: 5px;
+        }
+
+        .goal-copy {
+            color: var(--muted);
+            line-height: 1.8;
+            margin-bottom: 22px;
+            position: relative;
+            padding-left: 28px;
+        }
+
+        .goal-copy::before {
+            content: '"';
+            position: absolute;
+            left: 0;
+            top: -4px;
+            font-size: 2rem;
+            color: #d0ae8e;
+        }
+
+        .education-box {
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.72);
+            border: 1px solid var(--line);
+            padding: 18px;
+            display: grid;
+            grid-template-columns: 48px 1fr;
+            gap: 14px;
+            align-items: center;
+        }
+
+        .edu-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: grid;
+            place-items: center;
+            background: rgba(177, 138, 98, 0.16);
+            color: #8a6645;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 700;
+        }
+
+        .edu-copy h4 {
+            font-size: 1.4rem;
+            margin-bottom: 4px;
+        }
+
+        .edu-copy p {
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        .site-footer {
+            margin-top: 18px;
+            border-radius: 18px;
+            padding: 16px 22px;
+            background: linear-gradient(135deg, #9f7852, #86613f);
+            color: #fff;
+            display: grid;
+            gap: 12px;
+        }
+
+        .footer-top,
+        .footer-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .footer-script {
+            font-size: 2rem;
+            font-style: italic;
+        }
+
+        .footer-contacts {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+
+        .footer-line {
+            font-size: 0.92rem;
+        }
+
+        @media (max-width: 1100px) {
+            .hero,
+            .two-col,
+            .bottom-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .portrait-panel {
+                min-height: 520px;
+            }
+        }
+
+        @media (max-width: 780px) {
+            .site-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .nav {
+                flex-wrap: wrap;
+                gap: 18px;
+            }
+
+            .hero-panel {
+                padding: 24px 20px 22px;
+            }
+
+            .intro-pill {
+                margin-top: 18px;
+            }
+
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .projects-grid,
+            .skill-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-layout,
+            .education-box {
+                grid-template-columns: 1fr;
+            }
+
+            .about-icons {
+                grid-template-columns: repeat(4, 40px);
+            }
+        }
+    </style>
 </head>
-
 <body>
+    <div class="site-shell">
+        <div class="container">
+            <header class="site-header">
+                <div class="brand">
+                    <div class="brand-mark">ME</div>
+                    <div class="brand-name">
+                        <div>MARIAM</div>
+                        <div>ESIMOVA</div>
+                    </div>
+                </div>
 
-<header>
-<h1>Mariam Esimova</h1>
-<p>Information Systems Student | Future IT Specialist</p>
-</header>
+                <nav class="nav">
+                    <a href="#about">ABOUT</a>
+                    <a href="#skills">SKILLS</a>
+                    <a href="#projects">PROJECTS</a>
+                    <a href="#achievements">ACHIEVEMENTS</a>
+                    <a href="#contact">CONTACT</a>
+                    <a class="download" href="#contact">DOWNLOAD CV</a>
+                </nav>
+            </header>
 
-<section>
-<h2>About Me</h2>
+            <section class="hero">
+                <div class="portrait-panel">
+                    <div class="decor-dots"></div>
+                    <div class="decor-ring"></div>
+                    <div class="portrait-arch">
+                        <img class="portrait-photo" src="assets/profile.jpg" alt="Portrait of Mariam Esimova">
+                    </div>
+                </div>
 
-<div class="card">
-<p>
-I am an Information Systems student passionate about Linux administration,
-network engineering, cybersecurity, software development and modern technologies.
-I continuously improve my skills through academic projects, hackathons,
-technical conferences and independent learning.
-</p>
-</div>
+                <div class="hero-panel">
+                    <div class="sparkle"></div>
+                    <div class="sparkle-2"></div>
+                    <div class="ring-right"></div>
 
-</section>
+                    <span class="intro-pill">HELLO, I'M</span>
+                    <h1>Mariam <span>Esimova</span></h1>
+                    <p class="subtitle">
+                        Information Systems Student
+                        <span>Future IT Specialist</span>
+                    </p>
+                    <p class="quote">
+                        Passionate about technology, problem solving and building meaningful
+                        digital solutions.
+                    </p>
 
-<section>
+                    <div class="hero-actions">
+                        <a class="button button-primary" href="#projects">VIEW MY WORK</a>
+                        <a class="button button-secondary" href="#contact">CONTACT ME</a>
+                    </div>
 
-<h2>Technical Skills</h2>
+                    <div class="socials">
+                        <a href="#contact">in</a>
+                        <a href="#contact">gh</a>
+                        <a href="#contact">@</a>
+                    </div>
+                </div>
+            </section>
 
-<div class="skills">
+            <div class="sections">
+                <section class="two-col">
+                    <article class="card" id="about">
+                        <div class="split-title">
+                            <h2 class="section-title">ABOUT ME</h2>
+                        </div>
 
-<div class="skill">Linux Administration</div>
-<div class="skill">Networking</div>
-<div class="skill">Cisco Packet Tracer</div>
-<div class="skill">Git & GitHub</div>
-<div class="skill">GitHub Actions</div>
-<div class="skill">Python</div>
-<div class="skill">Django</div>
-<div class="skill">HTML & CSS</div>
-<div class="skill">Cybersecurity</div>
+                        <div class="about-layout">
+                            <div class="about-icons">
+                                <span>U</span>
+                                <span>E</span>
+                                <span>C</span>
+                                <span>H</span>
+                            </div>
 
-</div>
+                            <div class="body-copy">
+                                <p>
+                                    I am an Information Systems student with strong interest in
+                                    Linux administration, networking, cybersecurity and software
+                                    development.
+                                </p>
+                                <br>
+                                <p>
+                                    I enjoy learning new technologies and working on projects
+                                    that solve real-world problems.
+                                </p>
+                                <br>
+                                <p>
+                                    I constantly challenge myself through hackathons,
+                                    conferences and hands-on practice.
+                                </p>
+                            </div>
+                        </div>
+                    </article>
 
-</section>
+                    <article class="card" id="skills">
+                        <div class="split-title">
+                            <h2 class="section-title">TECHNICAL SKILLS</h2>
+                        </div>
 
-<section>
+                        <div class="skill-grid">
+                            <div class="skill-chip">Linux Administration</div>
+                            <div class="skill-chip">Networking</div>
+                            <div class="skill-chip">Cisco Packet Tracer</div>
+                            <div class="skill-chip">Git &amp; GitHub</div>
+                            <div class="skill-chip">GitHub Actions</div>
+                            <div class="skill-chip">Python</div>
+                            <div class="skill-chip">Django</div>
+                            <div class="skill-chip">HTML &amp; CSS</div>
+                            <div class="skill-chip">Cybersecurity</div>
+                        </div>
+                    </article>
+                </section>
 
-<h2>Projects</h2>
+                <section id="projects">
+                    <div class="projects-title">
+                        <h2 class="section-title">PROJECTS</h2>
+                    </div>
 
-<div class="card">
-<h3>Analyz AI – Hackathon Project</h3>
-<p>
-AI-powered platform designed to analyze technical specifications,
-identify weaknesses and provide recommendations for improving project quality.
-</p>
-</div>
+                    <div class="projects-grid">
+                        <article class="project-card">
+                            <div class="project-media">
+                                <div class="project-badge">AI</div>
+                                <div class="mock-screen"></div>
+                            </div>
+                            <div class="project-content">
+                                <h3>Analyz AI</h3>
+                                <div class="project-label">Hackathon Project</div>
+                                <p class="project-text">
+                                    AI-powered platform that analyzes technical specifications,
+                                    identifies weaknesses and provides intelligent recommendations.
+                                </p>
+                            </div>
+                        </article>
 
-<div class="card">
-<h3>GitHub Pages Deployment Workflow</h3>
-<p>
-Implemented a CI/CD pipeline using GitHub Actions and GitHub Pages
-for automatic deployment of static websites.
-</p>
-</div>
+                        <article class="project-card">
+                            <div class="project-media alt-two">
+                                <div class="project-badge">GH</div>
+                                <div class="mock-screen"></div>
+                            </div>
+                            <div class="project-content">
+                                <h3>GitHub Pages</h3>
+                                <div class="project-label">Deployment Workflow</div>
+                                <p class="project-text">
+                                    Implemented CI/CD pipeline using GitHub Actions and GitHub Pages
+                                    for automatic deployment of static websites.
+                                </p>
+                            </div>
+                        </article>
 
-<div class="card">
-<h3>Online Library System</h3>
-<p>
-Developed a Django-based web application with user authentication,
-database integration and REST API functionality.
-</p>
-</div>
+                        <article class="project-card">
+                            <div class="project-media alt-one">
+                                <div class="project-badge">DB</div>
+                                <div class="mock-book"></div>
+                            </div>
+                            <div class="project-content">
+                                <h3>Online Library System</h3>
+                                <div class="project-label">Django Project</div>
+                                <p class="project-text">
+                                    Web application built with Django featuring user authentication,
+                                    database integration and REST API functionality.
+                                </p>
+                            </div>
+                        </article>
 
-<div class="card">
-<h3>Network Infrastructure Labs</h3>
-<p>
-Designed and configured VLAN, DHCP, IPv6, STP, HSRP and network security
-solutions using Cisco technologies.
-</p>
-</div>
+                        <article class="project-card">
+                            <div class="project-media alt-three">
+                                <div class="project-badge">NW</div>
+                                <div class="mock-network"></div>
+                            </div>
+                            <div class="project-content">
+                                <h3>Network Infrastructure Labs</h3>
+                                <div class="project-label">Cisco Technologies</div>
+                                <p class="project-text">
+                                    Designed and configured VLAN, DHCP, IPv6, STP, HSRP and
+                                    network security solutions using Cisco Packet Tracer.
+                                </p>
+                            </div>
+                        </article>
+                    </div>
+                </section>
 
-</section>
+                <section class="bottom-grid">
+                    <article class="card" id="achievements">
+                        <div class="split-title">
+                            <h2 class="section-title">ACHIEVEMENTS &amp; ACTIVITIES</h2>
+                        </div>
 
-<section>
+                        <div class="timeline-list">
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div>
+                                    <strong>Participant of AI and Software Development Hackathons</strong>
+                                    Active participant in multiple hackathons and tech competitions.
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div>
+                                    <strong>Member of Team One Bit</strong>
+                                    Collaborating with talented teammates to build innovative solutions.
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div>
+                                    <strong>Developer of Analyz AI Project</strong>
+                                    Contributed to AI-based solution for technical document analysis.
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div>
+                                    <strong>Participant of KBTU Student Conference</strong>
+                                    Engaged in academic discussions and shared innovative ideas.
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div>
+                                    <strong>Active in University IT Projects</strong>
+                                    Working on practical projects and improving technical skills.
+                                </div>
+                            </div>
+                        </div>
+                    </article>
 
-<h2>Achievements & Activities</h2>
+                    <article class="card">
+                        <div class="split-title">
+                            <h2 class="section-title">CAREER GOALS</h2>
+                        </div>
 
-<div class="card">
-<ul>
-<li>Participant of AI and Software Development Hackathons</li>
-<li>Member of Team One Bit</li>
-<li>Developer of Analyz AI Project</li>
-<li>Participant of KBTU Student Conference</li>
-<li>Active participant in university IT projects</li>
-</ul>
-</div>
+                        <p class="goal-copy">
+                            My goal is to become a highly skilled IT professional specializing
+                            in Linux systems, networking, cybersecurity and software engineering.
+                            I am committed to continuous learning, gaining practical experience
+                            and building solutions that make impact.
+                        </p>
 
-</section>
+                        <div class="education-box">
+                            <div class="edu-icon">ED</div>
+                            <div class="edu-copy">
+                                <h4>EDUCATION</h4>
+                                <p>Bachelor's Degree in Information Systems</p>
+                                <p>Second-Year Student</p>
+                                <p>KBTU</p>
+                            </div>
+                        </div>
+                    </article>
+                </section>
+            </div>
 
-<section>
+            <footer class="site-footer" id="contact">
+                <div class="footer-top">
+                    <div class="footer-script">Let's connect!</div>
+                    <div class="footer-contacts footer-line">
+                        <span>mariam.esimova@mail.com</span>
+                        <span>linkedin.com/in/mariam-esimova</span>
+                        <span>github.com/mariam-esimova</span>
+                    </div>
+                </div>
 
-<h2>Career Goals</h2>
-
-<div class="card">
-<p>
-My goal is to become a highly skilled IT professional specializing in Linux systems,
-network engineering, cybersecurity and software development.
-I am committed to continuous learning and practical experience.
-</p>
-</div>
-
-</section>
-
-<footer>
-<p>© 2026 Mariam Esimova | IT Portfolio</p>
-</footer>
-
+                <div class="footer-bottom footer-line">
+                    <span>&copy; 2026 Mariam Esimova. All rights reserved.</span>
+                    <span>Information Systems Student Portfolio</span>
+                </div>
+            </footer>
+        </div>
+    </div>
 </body>
 </html>
